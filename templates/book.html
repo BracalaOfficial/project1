@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ binfo.title }}
+{% endblock %}
+
+{% block body %}
+    <p><b>Title: </b>{{ binfo.title }}</p>
+    <p><b>Author: </b>{{ binfo.author }}</p>
+    <p><b>Year: </b>{{ binfo.year }}</p>
+    <p><b>ISBN: </b>{{ binfo.isbn }}</p>
+    {% if reviews %}
+        <ul class="list-group">
+            {% for review in reviews %}
+                <li class="list-group-item">
+                    <p><b>{{ review.username }}</b></p>
+                    <p>{{ review.comment }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if itupr %}
+        <p>You are already left review for this book.</p>
+    {% else %}
+    <form action="/search/book/{{ binfo.isbn }}" method="POST">
+        <div class="mb-3">
+          <textarea name="comment" class="form-control" id="validationTextarea" placeholder="Please leave your opinion about this book" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+    {% endif %}
+{% endblock %}

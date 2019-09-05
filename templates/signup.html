@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Registration
+{% endblock %}
+
+{% block body %}
+<form action="{{ url_for('signup') }}" method="POST">
+        <div class="form-group">
+            <label for="exampleInputEmail1">First Name</label>
+            <input name="firstname" type="text" class="form-control" placeholder="First Name" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">First Name</label>
+            <input name="lastname" type="text" class="form-control" placeholder="Last Name" required>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Username</label>
+          <input name="user" type="text" class="form-control" placeholder="Create Username" required>
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input name="createpass" type="password" class="form-control" placeholder="Create Password" required>
+        </div>
+        <div class="form-group">
+            <input name="repeatpass" type="password" class="form-control" placeholder="Repeat Password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+{% endblock %}

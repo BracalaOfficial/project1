@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block body %}
+    <form action="{{ url_for('search') }}" class="form-inline md-form mr-auto mb-4" style="margin: 10px;" method="POST">
+        <input name="searchdata" class="form-control mr-sm-2" type="text" placeholder="Search books" aria-label="Search" required>
+        <button class="btn btn-primary btn-rounded btn-sm my-0" type="submit">Search</button>
+    </form>
+    {% if books %}
+        <ul class="list-group">
+            {% for book in books %}
+                <li class="list-group-item"><a href="/search/book/{{ book.isbn }}" class="card-link">{{ book.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% elif noresults %}
+        <p>No results... Please try again!</p>
+    {% endif %}
+{% endblock %}
+
